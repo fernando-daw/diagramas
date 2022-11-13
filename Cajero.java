@@ -1,35 +1,67 @@
 import java.util.Scanner;
 
-public class Cajero {
+public class cajero {
+    int desglose = 0;
 
-    static Scanner entrada = new Scanner(System.in); //Variable de clase, solo accesible por los miembros de la clase Cajero
+    public void retirada() {
+        Scanner cubrir = new Scanner(System.in);
+        System.out.println("Cantidad a retirar: ");
+        desglose = cubrir.nextInt();
+        if (desglose >= 5) {
+            System.out.println("Su Cantidad a retirar es: " + desglose);
 
-    /**
-     * Método para recoger valores enteros
-     * @param mensaje Parámetro de entrada que indica el mensaje a mostrar al usuario para solicitarle una cantidad
-     * @return Devuelve el valor solicitado
-     */
-    public static int pedirDinero(String mensaje){
-            int valor = 0;
-            System.out.println(mensaje);
-            valor = entrada.nextInt();
-            return valor;
-    }
-
-    /**
-     * Método para calcular la cantidad de billetes que deben devolverse
-     * @param valor_billete El valor del billete a calcular
-     * @param cantidad La cantidad a retirar o restante
-     * @return La cantidad de billetes que se devuelven
-     */
-    public static int devolver_billetes(int valor_billete, int cantidad){
-        int billetes = 0;
-        if(valor_billete<=cantidad){
-            billetes = cantidad / valor_billete;
+        } else {
+            System.out.println("Cantidad a retirar erronea: ");
         }
-        return billetes;
     }
 
+    public void cantidad() {
+        int quinientos = 0, doscientos = 0, cien = 0, cincuenta = 0, veinte = 0, diez = 0, cinco = 0;
+
+        quinientos = desglose / 500;
+        desglose = desglose - (quinientos * 500);
+
+        doscientos = desglose / 200;
+        desglose = desglose - (doscientos * 200);
+
+        cien = desglose / 100;
+        desglose = desglose - (cien * 100);
+
+        cincuenta = desglose / 50;
+        desglose = desglose - (cincuenta * 50);
+
+        veinte = desglose / 20;
+        desglose = desglose - (veinte * 20);
+
+        diez = desglose / 10;
+        desglose = desglose - (diez * 10);
+
+        cinco = desglose / 5;
+        desglose = desglose - (cinco * 5);
+
+
+        if (quinientos > 0) {
+            System.out.println("Billetes de 500: " + quinientos);
+        }
+        if (doscientos > 0) {
+            System.out.println("Billetes de 200: " + doscientos);
+        }
+        if (cien > 0) {
+            System.out.println("Billetes de 100: " + cien);
+        }
+        if (cincuenta > 0) {
+            System.out.println("Billetes de 50: " + cincuenta);
+        }
+        if (veinte > 0) {
+            System.out.println("Billetes de 10: " + veinte);
+        }
+        if (diez > 0) {
+            System.out.println("Billetes de 20: " + diez);
+        }
+        if (cinco > 0) {
+            System.out.println("Billetes de 5: " + cinco);
+        }
+    }
 
 
 }
